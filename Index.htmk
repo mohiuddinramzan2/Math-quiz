@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>গণিত কুইজ - মজায় শেখো</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- হোম স্ক্রিন -->
+        <div id="homeScreen" class="screen active">
+            <h1>🧮 গণিত কুইজ</h1>
+            <p class="subtitle">তোমার গণিত দক্ষতা যাচাই করো!</p>
+            
+            <div class="settings">
+                <div class="setting-group">
+                    <label>অপারেশন:</label>
+                    <div class="operation-buttons">
+                        <button class="op-btn active" data-op="+">যোগ (+)</button>
+                        <button class="op-btn" data-op="-">বিয়োগ (-)</button>
+                        <button class="op-btn" data-op="*">গুণ (×)</button>
+                        <button class="op-btn" data-op="/">ভাগ (÷)</button>
+                        <button class="op-btn" data-op="mixed">মিশ্র</button>
+                    </div>
+                </div>
+                
+                <div class="setting-group">
+                    <label>কঠিনতার স্তর:</label>
+                    <div class="difficulty-buttons">
+                        <button class="diff-btn active" data-diff="easy">সহজ</button>
+                        <button class="diff-btn" data-diff="medium">মাঝারি</button>
+                        <button class="diff-btn" data-diff="hard">কঠিন</button>
+                    </div>
+                </div>
+                
+                <div class="setting-group">
+                    <label>প্রশ্ন সংখ্যা:</label>
+                    <select id="questionCount">
+                        <option value="5">৫ টি</option>
+                        <option value="10" selected>১০ টি</option>
+                        <option value="15">১৫ টি</option>
+                        <option value="20">২০ টি</option>
+                    </select>
+                </div>
+            </div>
+            
+            <button class="start-btn" onclick="startQuiz()">🚀 কুইজ শুরু করো</button>
+            
+            <div class="stats-preview">
+                <p>🏆 সর্বোচ্চ স্কোর: <span id="highScore">0</span></p>
+            </div>
+        </div>
+        
+        <!-- কুইজ স্ক্রিন -->
+        <div id="quizScreen" class="screen">
+            <div class="quiz-header">
+                <div class="progress">
+                    <span id="currentQuestion">1</span>/<span id="totalQuestions">10</span>
+                </div>
+                <div class="score">
+                    স্কোর: <span id="scoreDisplay">0</span>
+                </div>
+                <div class="timer">
+                    ⏱️ <span id="timer">00</span>s
+                </div>
+            </div>
+            
+            <div class="question-card">
+                <h2 id="questionText">৫ + ৩ = ?</h2>
+            </div>
+            
+            <div class="options-container" id="optionsContainer">
+                <!-- Options will be dynamically generated -->
+            </div>
+            
+            <div class="quiz-footer">
+                <button class="next-btn" id="nextBtn" onclick="nextQuestion()" disabled>পরবর্তী ➡️</button>
+            </div>
+        </div>
+        
+        <!-- ফলাফল স্ক্রিন -->
+        <div id="resultScreen" class="screen">
+            <div class="result-card">
+                <h1>🎉 কুইজ শেষ!</h1>
+                
+                <div class="final-score">
+                    <p class="score-label">তোমার স্কোর</p>
+                    <p class="score-value"><span id="finalScore">0</span>/<span id="maxScore">10</span></p>
+                </div>
+                
+                <div class="performance-message" id="performanceMessage">
+                    দারুণ! তুমি গণিতে ভালো করেছো!
+                </div>
+                
+                <div class="wrong-answers" id="wrongAnswersList">
+                    <!-- ভুল উত্তরগুলো দেখানো হবে -->
+                </div>
+                
+                <div class="result-actions">
+                    <button class="action-btn primary" onclick="restartQuiz()">🔄 আবার খেলো</button>
+                    <button class="action-btn secondary" onclick="goHome()">🏠 হোম</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
